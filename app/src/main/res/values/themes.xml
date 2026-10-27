@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base Theme -->
+    <style name="Base.Theme.PureShield" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:textColor">@color/ps_text</item>
+        <item name="android:textColorSecondary">@color/ps_text_muted</item>
+        <item name="android:statusBarColor">?attr/psBg</item>
+        <item name="android:navigationBarColor">?attr/psBg</item>
+        <item name="android:windowBackground">?attr/psBg</item>
+    </style>
+
+    <!-- 1. Midnight Mint (Default) -->
+    <style name="Theme.PureShield.Mint" parent="Base.Theme.PureShield">
+        <item name="psBg">@color/mint_bg</item>
+        <item name="psSurface">@color/mint_surface</item>
+        <item name="psBorder">@color/mint_border</item>
+        <item name="psAccent">@color/mint_accent</item>
+        <item name="psAccentContainer">@color/mint_accent_container</item>
+    </style>
+
+    <!-- 2. Ocean Blue -->
+    <style name="Theme.PureShield.Ocean" parent="Base.Theme.PureShield">
+        <item name="psBg">@color/ocean_bg</item>
+        <item name="psSurface">@color/ocean_surface</item>
+        <item name="psBorder">@color/ocean_border</item>
+        <item name="psAccent">@color/ocean_accent</item>
+        <item name="psAccentContainer">@color/ocean_accent_container</item>
+    </style>
+
+    <!-- 3. Violet Dusk -->
+    <style name="Theme.PureShield.Violet" parent="Base.Theme.PureShield">
+        <item name="psBg">@color/violet_bg</item>
+        <item name="psSurface">@color/violet_surface</item>
+        <item name="psBorder">@color/violet_border</item>
+        <item name="psAccent">@color/violet_accent</item>
+        <item name="psAccentContainer">@color/violet_accent_container</item>
+    </style>
+
+    <!-- 4. Amber Ember -->
+    <style name="Theme.PureShield.Amber" parent="Base.Theme.PureShield">
+        <item name="psBg">@color/amber_bg</item>
+        <item name="psSurface">@color/amber_surface</item>
+        <item name="psBorder">@color/amber_border</item>
+        <item name="psAccent">@color/amber_accent</item>
+        <item name="psAccentContainer">@color/amber_accent_container</item>
+    </style>
+
+    <!-- 5. Rose Quartz -->
+    <style name="Theme.PureShield.Rose" parent="Base.Theme.PureShield">
+        <item name="psBg">@color/rose_bg</item>
+        <item name="psSurface">@color/rose_surface</item>
+        <item name="psBorder">@color/rose_border</item>
+        <item name="psAccent">@color/rose_accent</item>
+        <item name="psAccentContainer">@color/rose_accent_container</item>
+    </style>
+
+    <!-- 6. AMOLED Black -->
+    <style name="Theme.PureShield.Amoled" parent="Base.Theme.PureShield">
+        <item name="psBg">@color/amoled_bg</item>
+        <item name="psSurface">@color/amoled_surface</item>
+        <item name="psBorder">@color/amoled_border</item>
+        <item name="psAccent">@color/amoled_accent</item>
+        <item name="psAccentContainer">@color/amoled_accent_container</item>
+    </style>
+
+    <!-- Theme.PureShield alias pointing to Mint -->
+    <style name="Theme.PureShield" parent="Theme.PureShield.Mint" />
+
+    <!-- Backward compatibility alias -->
+    <style name="Theme.MyApplication" parent="Theme.PureShield" />
+
+</resources>

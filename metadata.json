@@ -1,0 +1,6 @@
+{
+  "name": "PureShield Content Blocker",
+  "description": "Aggressive adult content & link blocker with real-time monitoring, auto-launch watchdog, analytics, and instant shield protection.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

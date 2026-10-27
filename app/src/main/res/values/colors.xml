@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common PureShield Colors -->
+    <color name="ps_text">#E8ECEF</color>
+    <color name="ps_text_muted">#8A939C</color>
+    <color name="ps_on_accent">#0B0D10</color>
+    <color name="ps_danger">#E5737F</color>
+    <color name="ps_border_strong">#2A313A</color>
+
+    <!-- 1. Midnight Mint -->
+    <color name="mint_bg">#0B0D10</color>
+    <color name="mint_surface">#13161B</color>
+    <color name="mint_border">#1D2229</color>
+    <color name="mint_accent">#7CE3C4</color>
+    <color name="mint_accent_container">#10231E</color>
+
+    <!-- 2. Ocean Blue -->
+    <color name="ocean_bg">#0A0E14</color>
+    <color name="ocean_surface">#111722</color>
+    <color name="ocean_border">#1B2433</color>
+    <color name="ocean_accent">#7CB8FF</color>
+    <color name="ocean_accent_container">#101C2E</color>
+
+    <!-- 3. Violet Dusk -->
+    <color name="violet_bg">#0E0C14</color>
+    <color name="violet_surface">#161320</color>
+    <color name="violet_border">#231F33</color>
+    <color name="violet_accent">#B7A1FF</color>
+    <color name="violet_accent_container">#1C1830</color>
+
+    <!-- 4. Amber Ember -->
+    <color name="amber_bg">#100E0A</color>
+    <color name="amber_surface">#181510</color>
+    <color name="amber_border">#272218</color>
+    <color name="amber_accent">#FFC46B</color>
+    <color name="amber_accent_container">#2B2210</color>
+
+    <!-- 5. Rose Quartz -->
+    <color name="rose_bg">#110C0E</color>
+    <color name="rose_surface">#1A1316</color>
+    <color name="rose_border">#2A1F23</color>
+    <color name="rose_accent">#FF9DB1</color>
+    <color name="rose_accent_container">#2B1519</color>
+
+    <!-- 6. AMOLED Black -->
+    <color name="amoled_bg">#000000</color>
+    <color name="amoled_surface">#0A0A0A</color>
+    <color name="amoled_border">#1A1A1A</color>
+    <color name="amoled_accent">#7CE3C4</color>
+    <color name="amoled_accent_container">#10231E</color>
+
+    <!-- Legacy / Compatibility fallbacks -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

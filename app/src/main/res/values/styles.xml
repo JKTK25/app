@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Typography Base -->
+    <style name="PS.Text" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/ps_text</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="PS.Text.Title" parent="PS.Text">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="PS.Text.Body" parent="PS.Text">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="PS.Text.Caption" parent="PS.Text">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/ps_text_muted</item>
+    </style>
+
+    <style name="PS.Text.Number" parent="PS.Text">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="PS.Text.Label" parent="PS.Text">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textColor">@color/ps_text_muted</item>
+    </style>
+
+    <!-- Component Styles -->
+    <style name="PS.Card" parent="Widget.Material3.CardView.Outlined">
+        <item name="cardBackgroundColor">?attr/psSurface</item>
+        <item name="strokeColor">?attr/psBorder</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardCornerRadius">@dimen/ps_radius_card</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="PS.Button" parent="Widget.Material3.Button">
+        <item name="backgroundTint">?attr/psAccent</item>
+        <item name="android:textColor">@color/ps_on_accent</item>
+        <item name="cornerRadius">@dimen/ps_radius_control</item>
+        <item name="android:minHeight">@dimen/ps_touch_min</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="PS.Button.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textColor">?attr/psAccent</item>
+        <item name="android:minHeight">@dimen/ps_touch_min</item>
+    </style>
+
+    <style name="PS.Fab" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="backgroundTint">?attr/psAccent</item>
+        <item name="tint">@color/ps_on_accent</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Medium</item>
+    </style>
+
+    <style name="PS.Switch" parent="Widget.Material3.CompoundButton.Switch">
+        <item name="trackTint">@color/ps_switch_track</item>
+        <item name="thumbTint">@color/ps_switch_thumb</item>
+    </style>
+
+    <style name="PS.BottomNav" parent="Widget.Material3.BottomNavigationView">
+        <item name="backgroundTint">?attr/psSurface</item>
+        <item name="itemIconTint">@color/ps_nav_item</item>
+        <item name="itemTextColor">@color/ps_nav_item</item>
+    </style>
+
+    <style name="PS.BottomSheetTheme" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/PS.BottomSheetModal</item>
+    </style>
+
+    <style name="PS.BottomSheetModal" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="backgroundTint">?attr/psSurface</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.PureShield.BottomSheet</item>
+    </style>
+
+    <style name="ShapeAppearance.PureShield.BottomSheet" parent="ShapeAppearance.Material3.Corner.None">
+        <item name="cornerSizeTopLeft">@dimen/ps_radius_sheet</item>
+        <item name="cornerSizeTopRight">@dimen/ps_radius_sheet</item>
+    </style>
+
+    <style name="PS.Input" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">?attr/psBorder</item>
+        <item name="boxCornerRadiusTopStart">@dimen/ps_radius_control</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/ps_radius_control</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/ps_radius_control</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/ps_radius_control</item>
+    </style>
+
+</resources>

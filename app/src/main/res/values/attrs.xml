@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- PureShield Theme Attributes -->
+    <attr name="psBg" format="color" />
+    <attr name="psSurface" format="color" />
+    <attr name="psBorder" format="color" />
+    <attr name="psAccent" format="color" />
+    <attr name="psAccentContainer" format="color" />
+</resources>

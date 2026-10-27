@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- PureShield Shape and Spacing Tokens -->
+    <dimen name="ps_screen_pad">22dp</dimen>
+    <dimen name="ps_card_pad">18dp</dimen>
+    <dimen name="ps_gap">12dp</dimen>
+    <dimen name="ps_radius_card">20dp</dimen>
+    <dimen name="ps_radius_sheet">28dp</dimen>
+    <dimen name="ps_radius_control">14dp</dimen>
+    <dimen name="ps_touch_min">48dp</dimen>
+    <dimen name="ps_ring_size">150dp</dimen>
+</resources>

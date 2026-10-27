@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- PureShield launcher icon: shield with a check-mark cut-out (even-odd), inside the 66dp adaptive safe zone.
+     Also used as the themed (monochrome) layer, so it must stay a single flat shape. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#7CE3C4"
+        android:fillType="evenOdd"
+        android:pathData="M54,24 L78,33 V54 C78,68 68,79 54,86 C40,79 30,68 30,54 V33 Z M40.5,55.5 L44,52 L50,58 L64,44 L67.5,47.5 L50,65 Z" />
+</vector>

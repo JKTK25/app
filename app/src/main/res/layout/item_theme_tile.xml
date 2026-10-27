@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/theme_tile_card"
+    style="@style/PS.Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- Theme Mini Preview Window -->
+        <FrameLayout
+            android:id="@+id/preview_canvas"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_input">
+
+            <!-- Mini Surface Card Inside Preview -->
+            <View
+                android:id="@+id/preview_surface"
+                android:layout_width="48dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_card" />
+
+            <!-- Mini Accent Indicator -->
+            <View
+                android:id="@+id/preview_accent"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_gravity="top|end"
+                android:layout_margin="8dp"
+                android:background="@drawable/bg_pill" />
+        </FrameLayout>
+
+        <!-- Theme Title -->
+        <TextView
+            android:id="@+id/theme_label"
+            style="@style/PS.Text.Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            tools:text="Midnight Mint" />
+
+        <!-- Status / Selected Label -->
+        <TextView
+            android:id="@+id/theme_status"
+            style="@style/PS.Text.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            tools:text="Applied" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

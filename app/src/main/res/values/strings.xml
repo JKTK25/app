@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">PureShield</string>
+    <string name="accessibility_service_description">PureShield Cross-Browser Parental Guardian protects your device in real-time by inspecting URLs in external browsers (Chrome, Edge, Firefox, Brave, Samsung Internet, etc.) and blocking adult websites and explicit searches immediately.</string>
+</resources>
