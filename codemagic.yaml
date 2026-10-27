@@ -1,0 +1,132 @@
+# Codemagic CI/CD for PureShield (Android, Kotlin + Jetpack Compose)
+# Toolchain required by this project: AGP 9.1.1 -> Gradle 9.3.1 + JDK 17, compileSdk 36.1
+
+definitions:
+  # Shared build preparation, reused by both workflows
+  scripts:
+    - &prepare_build
+      name: Prepare build environment
+      script: |
+        set -euo pipefail
+
+        # 1. Tell Gradle where the Android SDK is
+        echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
+
+        # 2. Accept licences + make sure the compileSdk (36.1) platform is present
+        yes | "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
+        "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" \
+          "platforms;android-36.1" "build-tools;36.0.0" || true
+
+        # 3. The repo has no Gradle wrapper. AGP 9.1.1 needs Gradle 9.3.1, so generate
+        #    one in a scratch folder (avoids the preinstalled Gradle trying to
+        #    configure this project) and copy it in.
+        if [ ! -f "$CM_BUILD_DIR/gradlew" ]; then
+          mkdir -p /tmp/wrapper-gen && cd /tmp/wrapper-gen
+          touch settings.gradle
+          gradle wrapper --gradle-version 9.3.1 --distribution-type bin
+          cp gradlew gradlew.bat "$CM_BUILD_DIR/"
+          mkdir -p "$CM_BUILD_DIR/gradle"
+          cp -r gradle/wrapper "$CM_BUILD_DIR/gradle/"
+          cd "$CM_BUILD_DIR"
+        fi
+        chmod +x "$CM_BUILD_DIR/gradlew"
+
+        # 4. app/build.gradle.kts expects ${rootDir}/debug.keystore (git-ignored) -> create it
+        if [ ! -f "$CM_BUILD_DIR/debug.keystore" ]; then
+          keytool -genkeypair -v -keystore "$CM_BUILD_DIR/debug.keystore" \
+            -storepass android -keypass android -alias androiddebugkey \
+            -keyalg RSA -keysize 2048 -validity 10000 \
+            -dname "CN=Android Debug,O=Android,C=US"
+        fi
+
+        # 5. Secrets plugin reads .env (falls back to .env.example if GEMINI_API_KEY is not set)
+        echo "GEMINI_API_KEY=${GEMINI_API_KEY:-YOUR_GEMINI_API_KEY}" > "$CM_BUILD_DIR/.env"
+
+workflows:
+  # ---------------------------------------------------------------------------
+  # 1) Debug APK - no secrets needed. Use this to verify the build first.
+  # ---------------------------------------------------------------------------
+  pureshield-debug:
+    name: PureShield - Debug APK
+    max_build_duration: 45
+    instance_type: linux_x2
+    environment:
+      java: 17
+      # To enable Gemini features in CI: create a variable group in Codemagic
+      # (Teams > Global variables and secrets) containing a secure GEMINI_API_KEY,
+      # then uncomment:
+      # groups:
+      #   - pureshield_secrets
+    cache:
+      cache_paths:
+        - $HOME/.gradle/caches
+        - $HOME/.gradle/wrapper
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - *prepare_build
+      - name: Build debug APK
+        script: ./gradlew assembleDebug --stacktrace
+    artifacts:
+      - app/build/outputs/**/*.apk
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com   # <-- change me
+        notify:
+          success: true
+          failure: true
+
+  # ---------------------------------------------------------------------------
+  # 2) Signed release APK + AAB (Play Store). Needs a keystore uploaded in
+  #    Codemagic: Teams > Code signing identities > Android keystores.
+  #    Name/reference it exactly as below (or change keystore_reference).
+  # ---------------------------------------------------------------------------
+  pureshield-release:
+    name: PureShield - Release (APK + AAB)
+    max_build_duration: 60
+    instance_type: linux_x2
+    environment:
+      java: 17
+      android_signing:
+        - pureshield_keystore        # <-- keystore reference name in Codemagic
+      # groups:
+      #   - pureshield_secrets       # GEMINI_API_KEY
+    cache:
+      cache_paths:
+        - $HOME/.gradle/caches
+        - $HOME/.gradle/wrapper
+    triggering:
+      events:
+        - tag
+      tag_patterns:
+        - pattern: 'v*'
+          include: true
+    scripts:
+      - *prepare_build
+      - name: Map Codemagic signing vars to the names app/build.gradle.kts reads
+        script: |
+          {
+            echo "KEYSTORE_PATH=$CM_KEYSTORE_PATH"
+            echo "STORE_PASSWORD=$CM_KEYSTORE_PASSWORD"
+            echo "KEY_ALIAS=$CM_KEY_ALIAS"
+            echo "KEY_PASSWORD=$CM_KEY_PASSWORD"
+          } >> "$CM_ENV"
+      - name: Build release APK and AAB
+        script: ./gradlew assembleRelease bundleRelease --stacktrace
+    artifacts:
+      - app/build/outputs/**/*.apk
+      - app/build/outputs/**/*.aab
+      - app/build/outputs/**/mapping.txt
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com   # <-- change me
+        notify:
+          success: true
+          failure: true
